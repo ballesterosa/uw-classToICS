@@ -7,3 +7,6 @@ and download the file as a csv file and place it in the same directory as the sc
 Dependencies:
 * python ics library:
 `pip install ics`
+
+* python timezone library
+`pip install pytz`

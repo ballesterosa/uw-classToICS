@@ -71,11 +71,11 @@ def writeToCal():
 
   print("Go to this website: https://www.washington.edu/students/reg/calendar.html")
   print("and find your quarter's first and last day of instruction")
-  # uncomment this after testing
-  # start = input("Instruction begins (e.g. 'Mar 25, 2024'): ")
-  # end = input("Last day of instruction (e.g. 'May 31, 2024'): ")
-  start = 'Mar 25, 2024'
-  end = 'May 31, 2024'
+  # uncomment this for testing
+  # start = 'Mar 25, 2024'
+  # end = 'May 31, 2024'
+  start = input("Instruction begins (e.g. 'Mar 25, 2024'): ")
+  end = input("Last day of instruction (e.g. 'May 31, 2024'): ")
 
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   startDate = datetime(year=int(start[-4:]), month=months.index(start[0:3])+1, day=int(start.split(" ")[1].split(",")[0])).astimezone(tz)
