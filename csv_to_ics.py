@@ -90,13 +90,14 @@ def writeToCal():
     rows[index] = row
   
   c = Calendar()
+  c._timezones = []
   for dt in rrule.rrule(rrule.DAILY, dtstart=startDate, until=endDate):
     for row in rows:
       if str(dt.weekday()) in row[5]:
         e = Event()
         e.name = row[1]
-        e.begin = str(dt.date()) + ' ' + row[6][:-2] + ':' + row[6][-2:] + ':00'
-        e.end = str(dt.date()) + ' ' + row[7][:-2] + ':' + row[7][-2:] + ':00'
+        e.begin = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[6][:-2]), minute=int(row[6][-2:])).astimezone(tz)
+        e.end = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[7][:-2]), minute=int(row[7][-2:])).astimezone(tz)
         alarmTime = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[6][:-2]), minute=int(row[6][-2:])).astimezone(tz) - timedelta(minutes=30)
         alarm = BaseAlarm
         alarm.trigger = alarmTime
