@@ -8,5 +8,5 @@ Dependencies:
 * python ics library:
 `pip install ics`
 
-* python timezone library
+* python timezone library:
 `pip install pytz`
