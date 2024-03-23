@@ -97,7 +97,9 @@ def writeToCal():
         e = Event()
         e.name = row[1]
         e.begin = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[6][:-2]), minute=int(row[6][-2:])).astimezone(tz)
-        e.end = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[7][:-2]), minute=int(row[7][-2:])).astimezone(tz)
+        hourPlusMinDiff = 60*(int(row[7][:-2])-int(row[6][:-2])) + (int(row[7][-2:])-int(row[6][-2:]))
+        e.duration = timedelta(minutes=hourPlusMinDiff)
+        # e.end = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[7][:-2]), minute=int(row[7][-2:])).astimezone(tz)
         alarmTime = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[6][:-2]), minute=int(row[6][-2:])).astimezone(tz) - timedelta(minutes=30)
         alarm = BaseAlarm
         alarm.trigger = alarmTime
