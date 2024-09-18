@@ -1,1 +1,16 @@
-Replace with your schedule.csv
+,,,,,,,,,,
+SLN,Course,Type,Credits,Title,Meetings,,,,"Grading
+Option","More
+Information"
+,,,,,Days,Time,Location,Instructor,,
+13400,CSE 333 A,LC,4,SYSTEMS PROGRAMMING,MWF,1130-1220,SAV 260,"Tang,Hannah C",,Researching? Start here
+13405,CSE 333 AE,QZ,0,SYSTEMS PROGRAMMING,Th,1230- 120,ECE 025,,,
+13409,CSE 341 A,LC,4,PROGRAMMING LANGS,MWF,130- 220,CSE2 G01,"Tatlock,Zachary",,Researching? Start here
+13411,CSE 341 AB,QZ,0,PROGRAMMING LANGS,T,130- 220,JHN 022,,,
+13465,CSE 390 R,SM,2,SPECIAL TOPICS CSE,T,1130-1250,JHN 075,"Battle,Leilani",CR/NC,Researching? Start here
+13533,CSE 446 A,LC,4,MACHINE LEARNING,MW,900-1020,CSE2 G20,"Golub,Matt",,Researching? Start here
+13534,CSE 446 AA,QZ,0,MACHINE LEARNING,Th,830- 920,MGH 242,,,
+13571,CSE 484 A,LC,4,COMPUTER SECURITY,MWF,1030-1120,CSE2 G20,"Roesner,Franziska",,Researching? Start here
+13574,CSE 484 AC,QZ,0,COMPUTER SECURITY,Th,330- 420,MUE 155,,,
+13631,CSE 590 E,SM,1,RESEARCH SEMINAR,Th,1030-1120,MGH 295,"Anderson,Ruth",CR/NC,Researching? Start here
+Total credits: 19.0,,,,,,,,,,
