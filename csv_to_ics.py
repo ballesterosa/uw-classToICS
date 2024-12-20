@@ -72,14 +72,14 @@ def writeToCal():
   print("Go to this website: https://www.washington.edu/students/reg/calendar.html")
   print("and find your quarter's first and last day of instruction")
   # uncomment this for testing
-  # start = 'Mar 25, 2024'
-  # end = 'May 31, 2024'
-  start = input("Instruction begins (e.g. 'Mar 25, 2024'): ")
-  end = input("Last day of instruction (e.g. 'May 31, 2024'): ")
+  start = 'Jan 06, 2025'
+  end = 'Mar 14, 2025'
+  # start = input("Instruction begins (e.g. 'Mar 25, 2024'): ")
+  # end = input("Last day of instruction (e.g. 'May 31, 2024'): ")
 
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   startDate = datetime(year=int(start[-4:]), month=months.index(start[0:3])+1, day=int(start.split(" ")[1].split(",")[0])).astimezone(tz)
-  endDate = datetime(year=int(end[-4:]), month=months.index(end[0:3])+1, day=int(end.split(" ")[1].split(",")[0])).astimezone(tz)
+  endDate = datetime(year=int(end[-4:]), month=months.index(end[0:3])+1, day=int(end.split(" ")[1].split(",")[0]), hour=11, minute=59).astimezone(tz)
 
   for [index, row] in enumerate(rows):
     row[5] = row[5].replace('Th', '3')
@@ -92,24 +92,36 @@ def writeToCal():
   c = Calendar()
   c._timezones = []
   for dt in rrule.rrule(rrule.DAILY, dtstart=startDate, until=endDate):
-    for row in rows:
-      if str(dt.weekday()) in row[5]:
+    for [index, row] in enumerate(rows):
+      curr_weekday = str(dt.weekday())
+      if curr_weekday in row[5]:
+        # remove date after it is added once
+        row[5] = row[5].replace(curr_weekday, '')
+        rows[index] = row
+
         e = Event()
         e.name = row[1]
         e.begin = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[6][:-2]), minute=int(row[6][-2:])).astimezone(tz)
-        hourPlusMinDiff = 60*(int(row[7][:-2])-int(row[6][:-2])) + (int(row[7][-2:])-int(row[6][-2:]))
-        e.duration = timedelta(minutes=hourPlusMinDiff)
-        # e.end = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[7][:-2]), minute=int(row[7][-2:])).astimezone(tz)
+
+        # trying end time instead of duration for gCal
+        e.end = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[7][:-2]), minute=int(row[7][-2:])).astimezone(tz)
+
+        # hourPlusMinDiff = 60*(int(row[7][:-2])-int(row[6][:-2])) + (int(row[7][-2:])-int(row[6][-2:]))
+        # e.duration = timedelta(minutes=hourPlusMinDiff)
+
         alarmTime = datetime(year=dt.year, month=dt.month, day=dt.day, hour=int(row[6][:-2]), minute=int(row[6][-2:])).astimezone(tz) - timedelta(minutes=30)
         alarm = BaseAlarm
         alarm.trigger = alarmTime
         e.alarms = [alarm]
         e.location = row[8]
-        print(e)
+        print(e.serialize())
         c.events.add(e)
   
   with open('classes.ics', 'w') as file:
-    file.writelines(c.serialize_iter())
+    for line in c.serialize_iter():
+      if "END:VEVENT" in line:
+        file.write("RRULE:FREQ=WEEKLY;UNTIL=" + endDate.strftime("%Y%m%dT%H%M%SZ") + "\n")
+      file.write(line)
 
 
 formatCSV()
