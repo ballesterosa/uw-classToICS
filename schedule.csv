@@ -3,9 +3,11 @@ SLN,Course,Type,Credits,Title,Meetings,,,,"Grading
 Option","More
 Information"
 ,,,,,Days,Time,Location,Instructor,,
-13006,CSE 333 B,LC,4,SYSTEMS PROGRAMMING,MWF,230- 320,CSE2 G10,"Perkins,Hal",,Researching? Start here
-13009,CSE 333 BC,QZ,0,SYSTEMS PROGRAMMING,Th,230- 320,ECE 045,,,
-13151,CSE 469 A,LC,5,COMPUTER ARCH I,MW,1030-1220,MGH 241,"Oskin,Mark H.",,Researching? Start here
-13174,CSE 492 R,SM,1,UGRAD SEMINAR,Th,1030-1120,OUG 136,"Battle,Leilani",CR/NC,Researching? Start here
-13203,CSE 590 E,SM,1,RESEARCH SEMINAR,Th,1030-1120,T.B.A.,"Anderson,Ruth",CR/NC,Researching? Start here
-Total credits: 14.0,,,,,,,,,,
+21341,JSIS B 355 A,LC,5,CYBERSECURITY,MWF,930-1020,SMI 205,"Beyer,Jessica",,Researching? Start here
+21343,JSIS B 355 AA,QZ,0,CYBERSECURITY,TTh,830- 920,SAV 164,,,
+12915,CSE 451 A,LC,4,INTRO OPERATING SYS,MWF,1130-1220,CSE2 G10,"Wilcox,James Rasmussen",,Researching? Start here
+12918,CSE 451 AC,QZ,0,INTRO OPERATING SYS,Th,230- 320,MGH 254,,,
+12958,CSE 492 R,LC,1,UGRAD SEMINAR,Th,1030-1120,SIG 134,"Battle,Leilani",CR/NC,Researching? Start here
+12971,CSE 505 A,LC,4,PRIN OF PROG LANGS,TTh,1000-1120,CSE2 G04,"Tatlock,Zachary",,Researching? Start here
+12971,CSE P 505 A,LC,4,PRIN OF PROG LANGS,T,630- 920,CSE2 G10,"Wilcox,James Rasmussen",,Researching? Start here
+Total credits: 17.0,,,,,,,,,,

@@ -48,7 +48,7 @@ def formatCSV():
         Time[1] = '0' + str(Time[1])
       row = row[0:6] + [Time[0]] + [Time[1]] + row[7:]
       rows[index] = row
-  
+
   # write the formatted rows and fieldnames to formatted.csv
   with open('formatted.csv', 'w') as csvfile:
     csvwriter = csv.writer(csvfile)
@@ -72,8 +72,8 @@ def writeToCal():
   print("Go to this website: https://www.washington.edu/students/reg/calendar.html")
   print("and find your quarter's first and last day of instruction")
   # uncomment this for testing
-  start = 'Jan 06, 2025'
-  end = 'Mar 14, 2025'
+  start = 'Mar 31, 2025'
+  end = 'Jun 7, 2025'
   # start = input("Instruction begins (e.g. 'Mar 25, 2024'): ")
   # end = input("Last day of instruction (e.g. 'May 31, 2024'): ")
 
@@ -88,7 +88,7 @@ def writeToCal():
     row[5] = row[5].replace('W', '2')
     row[5] = row[5].replace('F', '4')
     rows[index] = row
-  
+
   c = Calendar()
   c._timezones = []
   for dt in rrule.rrule(rrule.DAILY, dtstart=startDate, until=endDate):
@@ -116,7 +116,7 @@ def writeToCal():
         e.location = row[8]
         print(e.serialize())
         c.events.add(e)
-  
+
   with open('classes.ics', 'w') as file:
     for line in c.serialize_iter():
       if "END:VEVENT" in line:
